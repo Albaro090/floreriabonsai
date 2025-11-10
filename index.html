@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florería Bonsai | Inicio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <script src="https://kit.fontawesome.com/a2e0e9a65b.js" crossorigin="anonymous" defer></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo Florería Bonsai">
+      <h1>Florería Bonsai</h1>
+    </div>
+    <ul>
+      <li><a href="index.html" class="activo">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- CARRUSEL -->
+  <section class="hero">
+    <div class="carousel">
+      <div class="slide active">
+        <img src="img/banner1.png" alt="Flores elegantes">
+        <div class="hero-text">
+          <h2>Florería Bonsai</h2>
+          <p>Transmitimos emociones a través de cada flor </p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="img/banner2.png" alt="Ramos de amor">
+        <div class="hero-text">
+          <h2>Detalles que enamoran</h2>
+          <p>Regala sonrisas con nuestros arreglos florales</p>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="img/banner3.jpg" alt="Decoraciones únicas">
+        <div class="hero-text">
+          <h2>Momentos inolvidables</h2>
+          <p>Flores frescas y diseños personalizados</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN DESTACADOS -->
+  <section class="inicio-productos">
+    <h2>Arreglos Destacados</h2>
+    <div class="productos-grid">
+      <div class="producto">
+        <img src="img/arreglo8.png" alt="Ramo Amor Eterno">
+        <h3>Arreglo de Girasoles en caja</h3>
+        <p>S/ 85.00</p>
+        <button class="btn-comprar" data-producto="Ramo Amor Eterno">Comprar</button>
+      </div>
+      <div class="producto">
+        <img src="img/arreglo10.png" alt="Arreglo Primavera">
+        <h3>Canasta de rosas</h3>
+        <p>S/ 120.00</p>
+        <button class="btn-comprar" data-producto="Arreglo Primavera">Comprar</button>
+      </div>
+      <div class="producto">
+        <img src="img/arreglo11.png" alt="Ramo Especial">
+        <h3>Caja de rosas</h3>
+        <p>S/ 95.00</p>
+        <button class="btn-comprar" data-producto="Ramo Especial">Comprar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL UNIFICADO -->
+  <div class="modal" id="modalCompra" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-content" role="document">
+      <button class="close" id="cerrarModal" aria-label="Cerrar">&times;</button>
+      <h3 id="tituloProducto">Producto</h3>
+
+      <form id="formCompra">
+        <!-- DEDICATORIA -->
+        <fieldset class="modal-fieldset">
+          <legend>Datos para la Dedicatoria</legend>
+          <input type="text" id="dedPara" name="dedPara" placeholder="Para (nombre del destinatario)" required>
+          <textarea id="dedicatoria" name="dedicatoria" placeholder="Dedicatoria (mensaje corto)" rows="3"></textarea>
+        </fieldset>
+
+        <!-- DESTINATARIO -->
+        <fieldset class="modal-fieldset">
+          <legend>¿A quién se entrega?</legend>
+          <input type="text" id="recipientName" name="recipientName" placeholder="Nombre y apellido del destinatario" required>
+          <input type="tel" id="recipientPhone" name="recipientPhone" placeholder="Teléfono celular destinatario (9XXXXXXXX)" pattern="[0-9]{7,15}" required>
+        </fieldset>
+
+        <!-- ENTREGA -->
+        <fieldset class="modal-fieldset">
+          <legend>Día y dirección de entrega</legend>
+          <label for="deliveryDate" class="small-label">Día de entrega</label>
+          <input type="date" id="deliveryDate" name="deliveryDate" required>
+          <input type="text" id="streetAddress" name="streetAddress" placeholder="Dirección de la calle" required>
+          <input type="text" id="reference" name="reference" placeholder="Referencia (ej. puerta azul, piso 2, frente a...)">
+        </fieldset>
+
+        <button type="submit" class="btn-whatsapp" aria-label="Enviar pedido por WhatsApp">📲 Enviar pedido por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/51984351497" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 Florería Bonsai — Todos los derechos reservados</p>
+  </footer>
+
+  <!-- JS CARRUSEL Y MODAL -->
+  <script>
+    // Carrusel automático
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlides() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === slideIndex));
+      slideIndex = (slideIndex + 1) % slides.length;
+    }
+    setInterval(showSlides, 5000);
+
+    // Modal de compra unificado
+    (function(){
+      const waNumber = '51984351497';
+      const modal = document.getElementById('modalCompra');
+      const cerrarModal = document.getElementById('cerrarModal');
+      const botones = document.querySelectorAll('.btn-comprar');
+      const tituloProducto = document.getElementById('tituloProducto');
+      const form = document.getElementById('formCompra');
+
+      function openModal(producto) {
+        tituloProducto.textContent = producto;
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden','false');
+        setTimeout(()=> document.getElementById('dedPara').focus(), 120);
+      }
+
+      function closeModal() {
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden','true');
+      }
+
+      botones.forEach(btn => btn.addEventListener('click', ()=> openModal(btn.dataset.producto)));
+      cerrarModal.addEventListener('click', closeModal);
+      window.addEventListener('click', e => { if(e.target===modal) closeModal(); });
+      window.addEventListener('keydown', e => { if(e.key==='Escape') closeModal(); });
+
+      function formatDateToDDMMYYYY(isoDate){
+        if(!isoDate) return '';
+        const d = new Date(isoDate+'T00:00:00');
+        return `${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}/${d.getFullYear()}`;
+      }
+
+      form.addEventListener('submit', e=>{
+        e.preventDefault();
+        const producto = tituloProducto.textContent;
+        const dedPara = document.getElementById('dedPara').value.trim();
+        const dedicatoria = document.getElementById('dedicatoria').value.trim();
+        const recipientName = document.getElementById('recipientName').value.trim();
+        const recipientPhone = document.getElementById('recipientPhone').value.trim();
+        const deliveryISO = document.getElementById('deliveryDate').value;
+        const deliveryDate = formatDateToDDMMYYYY(deliveryISO);
+        const streetAddress = document.getElementById('streetAddress').value.trim();
+        const reference = document.getElementById('reference').value.trim();
+
+        if(!dedPara || !recipientName || !recipientPhone || !deliveryISO || !streetAddress){
+          alert('Por favor completa los campos obligatorios antes de enviar.');
+          return;
+        }
+
+        let mensaje = `
+🛒 *Nuevo pedido - Florería Bonsai*
+
+🌸 *Producto:* ${producto}
+
+💌 *Datos para la dedicatoria*
+• Para: ${dedPara}
+• Dedicatoria: ${dedicatoria || '-'}
+
+📦 *A quién se entrega*
+• Nombre: ${recipientName}
+• Teléfono: ${recipientPhone}
+
+📅 *Día de entrega:* ${deliveryDate}
+📍 *Dirección:* ${streetAddress}
+📎 *Referencia:* ${reference || '-'}
+
+💬 *Mensaje adicional del cliente:* ${dedicatoria || '-'}
+`;
+
+        window.open(`https://wa.me/${waNumber}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        closeModal();
+        form.reset();
+      });
+    })();
+  </script>
+
+</body>
+</html>

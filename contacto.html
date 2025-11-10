@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Florería Bonsai</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="img/logo.png" type="image/png">
+  <script src="https://kit.fontawesome.com/a2e0e9a65b.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="img/logo.png" alt="Logo Florería Bonsai">
+      <h1>Florería Bonsai</h1>
+    </div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="productos.html">Productos</a></li>
+      <li><a href="sobre_nosotros.html">Sobre Nosotros</a></li>
+      <li><a href="contacto.html" class="activo">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- CABECERA -->
+  <section class="contacto-header">
+    <h2>Contáctanos</h2>
+    <p>Estamos aquí para ayudarte a expresar tus sentimientos con flores únicas y especiales.</p>
+  </section>
+
+  <!-- SECCIÓN DE CONTACTO -->
+  <section class="contacto-contenido">
+    <div class="info-contacto">
+      <h3>Información de Contacto</h3>
+      <ul>
+        <li><i class="fas fa-map-marker-alt"></i> Cusco, Perú</li>
+        <li><i class="fas fa-phone"></i> +51 984 351 497</li>
+        <li><i class="fas fa-envelope"></i> contacto@floreriabonsai.com</li>
+        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/51984351497" target="_blank">Chatea con nosotros</a></li>
+      </ul>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/51984351497" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="formulario-contacto">
+      <h3>Envíanos un Mensaje</h3>
+      <form id="form-contacto" onsubmit="return enviarWhatsApp();">
+        <input type="text" id="nombre" placeholder="Tu nombre completo" required>
+        <input type="email" id="correo" placeholder="Tu correo electrónico" required>
+        <input type="text" id="asunto" placeholder="Asunto o tipo de consulta" required>
+        <textarea id="mensaje" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        <button type="submit" class="btn-enviar"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- MAPA -->
+  <section class="mapa">
+    <h3>Encuéntranos Aquí</h3>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3827.172710079132!2d-71.9738!3d-13.5171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9149b5b4f2c4b4e1%3A0x2dbd985f5e8ff88f!2sCusco!5e0!3m2!1ses-419!2spe!4v1692205287000!5m2!1ses-419!2spe" 
+      width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/51984351497" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 Florería Bonsai — Todos los derechos reservados</p>
+  </footer>
+
+  <!-- SCRIPT PARA ENVIAR A WHATSAPP -->
+  <script>
+    function enviarWhatsApp() {
+      let nombre = document.getElementById("nombre").value;
+      let correo = document.getElementById("correo").value;
+      let asunto = document.getElementById("asunto").value;
+      let mensaje = document.getElementById("mensaje").value;
+
+      let texto = `🌸 *Nuevo Mensaje de Contacto* 🌸%0A
+      👤 *Nombre:* ${nombre}%0A
+      📧 *Correo:* ${correo}%0A
+      📝 *Asunto:* ${asunto}%0A
+      💬 *Mensaje:* ${mensaje}`;
+
+      let url = `https://wa.me/51984351497?text=${texto}`;
+      window.open(url, "_blank");
+      return false;
+    }
+  </script>
+
+</body>
+</html>
